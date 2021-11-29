@@ -1,0 +1,9 @@
+# Project exclude paths
+/mybatis-01/target/
+/mybatis-02/target/
+/mybatis-03/target/
+/mybatis-04/target/
+/mybatis-05/target/
+/mybatis-06/target/
+/mybatis-07/target/
+/mybatis-08/target/

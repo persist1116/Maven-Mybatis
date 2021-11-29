@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace绑定一个对应的Dao/Mapper接口-->
+<!--namespace中的包名要和接口包名一致-->
+<mapper namespace="com.mybatis.dao.UserMapper1">
+<!--    结果集映射-->
+    <resultMap id="UserMap" type="com.mybatis.pojo.User">
+        <result column="sno" property="sno"/>
+        <result column="sname" property="sname"/>
+        <result column="classno" property="classno"/>
+    </resultMap>
+    <select id="getUserById" resultMap="UserMap">
+        select * from mytestdb.t_student where sno = #{id}
+    </select>
+<!-- 分页查询   -->
+    <select id="getUserByLimit" resultType="User" parameterType="map">
+#         startIndex:分页起始位置，pageSize:分页大小
+        select * from mytestdb.t_student limit #{startIndex},#{pageSize}
+    </select>
+    <select id="getUserByRowBounds" resultType="User">
+        select * from mytestdb.t_student
+    </select>
+</mapper>

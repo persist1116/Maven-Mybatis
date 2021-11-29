@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.dao.UserMapper1">
+<!--    开启二级缓存-->
+    <cache/>
+    <select id="getUserSno" resultType="User">
+        select * from mytestdb.t_student where sno = #{sno}
+    </select>
+    <insert id="addUser" parameterType="User">
+        insert into mytestdb.t_student (sno, sname, classno)
+        VALUES (sno = #{sno},sname = #{sname}, classno = #{classno})
+    </insert>
+</mapper>
+
+

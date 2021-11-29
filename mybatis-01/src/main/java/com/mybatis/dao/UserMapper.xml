@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace绑定一个对应的Dao/Mapper接口-->
+<!--namespace中的包名要和接口包名一致-->
+<mapper namespace="com.mybatis.dao.UserMapper1">
+    <!--id就是对应的namespace中方法名   resultType对应sql语句的返回值  parameterType：参数类型-->
+    <select id="getUserList" resultType="com.mybatis.pojo.User">
+        select * from mytestdb.t_student
+    </select>
+    <select id="getUserBySno" parameterType="int" resultType="com.mybatis.pojo.User">
+        select * from mytestdb.t_student where sno = #{sno}
+    </select>
+    <insert id="addUser" parameterType="com.mybatis.pojo.User">
+        insert into mytestdb.t_student (sno, sname, classno) VALUES (#{sno},#{sname},#{classno});
+    </insert>
+
+    <insert id="addStudent" parameterType="map">
+        insert into mytestdb.t_student (sno, sname, classno) VALUES (#{id},#{name},#{classno});
+    </insert>
+
+    <update id="updateUser" parameterType="com.mybatis.pojo.User">
+        update mytestdb.t_student
+        set sname = #{sname},classno = #{classno}
+        where sno = #{sno};
+    </update>
+    <delete id="deleteUser" parameterType="int">
+        delete
+        from mytestdb.t_student
+        where sno = #{sno};
+    </delete>
+
+</mapper>
